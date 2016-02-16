@@ -14,11 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.model;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
 import android.app.Fragment;
 
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.ui.MultipleChoiceFragment;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui.MultipleChoiceFragment;
 
 import java.util.ArrayList;
 

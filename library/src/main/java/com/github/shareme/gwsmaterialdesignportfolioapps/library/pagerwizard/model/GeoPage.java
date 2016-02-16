@@ -14,17 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.ui;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.model.Page;
+import android.app.Fragment;
+
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui.GeoFragment;
 
 /**
- * PageFragmentCallbacks interface.
+ * GeoPage
  * Created by fgrott on 2/16/2016.
  */
 @SuppressWarnings("unused")
-public interface PageFragmentCallbacks {
+public class GeoPage extends TextPage {
 
-  Page onGetPage(String key);
+  public GeoPage(ModelCallbacks callbacks, String title) {
+    super(callbacks, title);
+  }
 
+  @Override
+  public Fragment createFragment() {
+    return GeoFragment.create(getKey());
+  }
+
+  public GeoPage setValue(String value) {
+    mData.putString(SIMPLE_DATA_KEY, value);
+    return this;
+  }
 }

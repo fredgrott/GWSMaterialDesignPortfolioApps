@@ -14,18 +14,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.model;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui;
 
-import java.util.ArrayList;
+import android.os.Bundle;
+import android.text.InputType;
 
 /**
- * Represents a node in the page tree. Can either be a single page, or a page container.
+ * NumberFragment
  * Created by fgrott on 2/16/2016.
  */
 @SuppressWarnings("unused")
-public interface PageTreeNode {
+public class NumberFragment extends TextFragment {
+  public static NumberFragment create(String key) {
+    Bundle args = new Bundle();
+    args.putString(ARG_KEY, key);
 
-  Page findByKey(String key);
-  void flattenCurrentPageSequence(ArrayList<Page> dest);
+    NumberFragment f = new NumberFragment();
+    f.setArguments(args);
+    return f;
+  }
+
+
+  @Override
+  protected void setInputType() {
+
+      mEditTextInput.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+  }
 
 }

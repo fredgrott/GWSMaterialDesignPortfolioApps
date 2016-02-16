@@ -14,30 +14,26 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.model;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
 import android.app.Fragment;
 
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.ui.GeoFragment;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui.NumberFragment;
 
 /**
- * GeoPage
+ * NumberPage
  * Created by fgrott on 2/16/2016.
  */
 @SuppressWarnings("unused")
-public class GeoPage extends TextPage {
+public class NumberPage extends TextPage {
 
-  public GeoPage(ModelCallbacks callbacks, String title) {
+  public NumberPage(ModelCallbacks callbacks, String title) {
     super(callbacks, title);
   }
 
   @Override
   public Fragment createFragment() {
-    return GeoFragment.create(getKey());
+    return NumberFragment.create(getKey());
   }
 
-  public GeoPage setValue(String value) {
-    mData.putString(SIMPLE_DATA_KEY, value);
-    return this;
-  }
 }

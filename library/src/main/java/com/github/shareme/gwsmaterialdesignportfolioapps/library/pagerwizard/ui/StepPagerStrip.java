@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.ui;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui;
 
 import android.content.Context;
 import android.content.res.Resources;

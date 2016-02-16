@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.ui;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -31,8 +31,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.github.shareme.gwsmaterialdesignportfolioapps.library.R;
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.model.Page;
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.model.SimpleLocationListener;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model.Page;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model.SimpleLocationListener;
 
 import java.io.IOException;
 import java.util.List;

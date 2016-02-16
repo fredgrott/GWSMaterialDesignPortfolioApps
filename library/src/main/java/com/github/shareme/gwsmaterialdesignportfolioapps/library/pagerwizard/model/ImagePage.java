@@ -14,32 +14,30 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.ui;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
-import android.os.Bundle;
-import android.text.InputType;
+import android.app.Fragment;
+
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui.ImageFragment;
 
 /**
- * NumberFragment
+ * ImagePage
  * Created by fgrott on 2/16/2016.
  */
 @SuppressWarnings("unused")
-public class NumberFragment extends TextFragment {
-  public static NumberFragment create(String key) {
-    Bundle args = new Bundle();
-    args.putString(ARG_KEY, key);
+public class ImagePage extends TextPage {
 
-    NumberFragment f = new NumberFragment();
-    f.setArguments(args);
-    return f;
+  public ImagePage(ModelCallbacks callbacks, String title) {
+    super(callbacks, title);
   }
-
 
   @Override
-  protected void setInputType() {
-
-      mEditTextInput.setInputType(InputType.TYPE_CLASS_NUMBER);
-
+  public Fragment createFragment() {
+    return ImageFragment.create(getKey());
   }
 
+  public ImagePage setValue(String value) {
+    mData.putString(SIMPLE_DATA_KEY, value);
+    return this;
+  }
 }

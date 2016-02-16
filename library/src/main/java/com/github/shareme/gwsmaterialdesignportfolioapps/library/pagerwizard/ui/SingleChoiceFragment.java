@@ -1,4 +1,4 @@
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.ui;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.ui;
 
 import android.app.Activity;
 import android.app.ListFragment;
@@ -12,8 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.github.shareme.gwsmaterialdesignportfolioapps.library.R;
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.model.Page;
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.model.SingleFixedChoicePage;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model.Page;
+import com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model.SingleFixedChoicePage;
 
 import java.util.ArrayList;
 import java.util.List;

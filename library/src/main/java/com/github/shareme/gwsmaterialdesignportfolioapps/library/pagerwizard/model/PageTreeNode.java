@@ -14,30 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.model;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
-import android.app.Fragment;
-
-import com.github.shareme.gwsmaterialdesignportfolioapps.library.ui.ImageFragment;
+import java.util.ArrayList;
 
 /**
- * ImagePage
+ * Represents a node in the page tree. Can either be a single page, or a page container.
  * Created by fgrott on 2/16/2016.
  */
 @SuppressWarnings("unused")
-public class ImagePage extends TextPage {
+public interface PageTreeNode {
 
-  public ImagePage(ModelCallbacks callbacks, String title) {
-    super(callbacks, title);
-  }
+  Page findByKey(String key);
+  void flattenCurrentPageSequence(ArrayList<Page> dest);
 
-  @Override
-  public Fragment createFragment() {
-    return ImageFragment.create(getKey());
-  }
-
-  public ImagePage setValue(String value) {
-    mData.putString(SIMPLE_DATA_KEY, value);
-    return this;
-  }
 }

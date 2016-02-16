@@ -1,4 +1,4 @@
-package com.github.shareme.gwsmaterialdesignportfolioapps.library.model;
+package com.github.shareme.gwsmaterialdesignportfolioapps.library.pagerwizard.model;
 
 import android.location.Location;
 
