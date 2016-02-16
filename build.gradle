@@ -1,21 +1,96 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+/*
+ * Copyright (C) 2016 Fred Grott(aka shareme GrottWorkShop)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in
+ * compliance with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is
+ * distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and limitations under License.
+ */
+// gradle best practices tip: we can apply gradle snippets as plugins
+apply from: 'buildsystem/bootstrap.gradle'
+apply from: 'buildsystem/mydependencies.gradle'
+
+// required to import the GRGit lib we included on the gradle plugin classpath
+// so that we can use JGit in a cross-platform way to do git tags
+import org.ajoberstar.grgit.*
+
+
 
 buildscript {
     repositories {
         jcenter()
+        // we use  one or two plugins that are snapshots
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:2.0.0-beta3'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+        // GrGit wrapper of JGit for cross-platform git stuff
+        // we can only call it from this build script, however.
+        classpath 'org.ajoberstar:grgit:1.4.1'
+        // in app modules
+        // apply plugin: 'com.neenbedankt.android-apt'
+        // need version 1.8 once butterknife is to 8.0.2 stable
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        //godot plugin
+        classpath 'de.hannesstruss:godot:0.2'
+        //hugo plugin
+        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+        //felix has a better spoon plugin
+        classpath 'de.felixschulze.gradle:gradle-spoon-plugin:2.7.3'
+        // versioning artifacts
+        classpath 'org.moallemi.gradle.advanced-build-version:gradle-plugin:1.5.0'
+        //jacoco-everywhere
+        classpath 'com.trickyandroid:jacoco-everywhere:0.1.0'
+        // wire gradle plugin for protocol buffers
+        classpath "com.bendb.gradle:wire-gradle-plugin:1.6.1-SNAPSHOT"
+        //view-inspector puts a view inspector and other debug tools in a view group
+        // only accessible in the debug of an app
+        classpath 'com.github.xfumihiro.view-inspector:view-inspector-plugin:0.1.0'
+
     }
 }
 
 allprojects {
-    repositories {
-        jcenter()
+    ext{
+        //Configure stuff
+        ourReportsDir = '${project.buildDir}/reports'
+        // we use a plugin to version libraries and applications and the versioning
+        // policy is usually different for both the app and library modules
+        // thus we define the versions per the plugin in each individual module
+
+        testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
+
+
+        // has changed as of android gradle plugin 2alpha5
+        androidCompileSdkVersion = 'Google Inc.:Google APIs:23'
+        androidBuildToolsVersion = '23.0.2'
+        androidMinSdkVersion = 16
+        androidTargetSdkVersion = 23
+
+        /*
+        Compute Date and time for reports, right from
+        Date example from Groovy JDK
+     */
+        buildTime = new Date().format("yyyy-MM-dd'T'HH:mm", TimeZone.getTimeZone("CST"))
+
+
+        //git sha hash stuff, cross-platform of course
+        //noinspection GrDeprecatedAPIUsage
+        repo = Grgit.open(rootProject.file('.'))
+        gitSha = '${repo.head().abbreviatedId}'
+
+
     }
+
 }
 
 task clean(type: Delete) {
