@@ -133,4 +133,6 @@ dependencies {
     //noinspection GroovyAssignabilityCheck
     compile rootProject.ext.logDependencies.timber
 
+    compile 'ch.acra:acra:4.8.2'
+
 }
